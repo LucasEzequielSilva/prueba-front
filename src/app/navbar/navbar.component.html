@@ -1,0 +1,94 @@
+<header class="absolute z-30">
+  <!-- Botón para abrir drawer -->
+  <button
+    class="text-gray_text p-2 focus:outline-none active:bg-white/70 hover:bg-white/30 hover:text-[#222] active:text-[#444] rounded transition-colors duration-200 ease-out hover:ease-in"
+    (click)="toggleDrawer()"
+  >
+    <svg
+      class="w-8 h-8 transition ease-in-out"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+      />
+    </svg>
+  </button>
+  <!-- Drawer -->
+  <div
+    class="fixed z-20 top-0 left-0 h-screen w-full lg:w-64 bg-main transform ease-in-out transition-transform duration-300 flex flex-col p-4 gap-4"
+    [class.translate-x-0]="isDrawerOpen"
+    [class.-translate-x-full]="!isDrawerOpen"
+    [class.shadow]="isDrawerOpen"
+  >
+    <div class="flex justify-between">
+      <h2 class="font-bold text-2xl text-white">Categorías</h2>
+      <button
+        class="text-gray_text active:bg-white/70 hover:bg-white/30 hover:text-[#222] transition-colors active:text-[#444] rounded ease-in duration-150"
+        (click)="closeDrawer()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+    <hr class="bg-gray_text" />
+    <div class="px-2 flex flex-col gap-4 text-xl">
+      <!-- CATEGORIAS -->
+      <ng-container *ngFor="let category of data">
+        <!-- categorias -->
+        <a
+          *ngIf="!category?.subcategories"
+          class="text-acento"
+          routerLink="/detail"
+          >{{ category?.name }}</a
+        >
+        <!-- Subcategories -->
+        <div *ngIf="category?.subcategories" class="flex flex-col gap-2">
+            <div (click)="handleCollapse()" class="flex justify-between items-center cursor-pointer">
+              <p class="text-acento" routerLink="/detail">{{ category?.name }}</p>
+              <img class="cursor-pointer w-4 transition-transform transform" [class.rotate-180]="!collapse" src="../../assets/bottom_arrow.svg" alt="arrow">
+            </div>
+            <div *ngIf="category?.subcategories" [class.animate-collapse]="!collapse" [class.animate-expand]="collapse" [class.hidden]="!collapse" [class.transition-all]="true" class="overflow-hidden flex flex-col gap-1 hover:border-acento cursor-pointer">
+              <!-- Contenido de subcategorías -->
+              <ng-container *ngFor="let subcategory of category?.subcategories">
+                <div class="flex gap-2 items-center">
+                    <input
+                    name="options"
+                    class="appearance-none rounded-full p-px w-6 h-6 bg-transparent border-[3px] border-[#79747E] checked:bg-[#79747E] checked:border-acento hover:border-acento transition-colors ease-in duration-150"
+                    type="radio"
+                    [id]="subcategory"
+                  >
+                                    <label for="{{ subcategory }}" class="grow text-[#79747E] transition-colors duration-150 hover:text-acento ease-in cursor-pointer">{{ subcategory }}</label>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          
+        <hr class="bg-gray_text" />
+      </ng-container>
+    </div>
+  </div>
+  <!-- Capa de oscuridad para el fondo del drawer en desktop -->
+</header>
+<div
+  *ngIf="isDrawerOpen"
+  (click)="toggleDrawer()"
+  class="w-full h-screen fixed top-0 left-0 bg-black/50 z-20"
+></div>

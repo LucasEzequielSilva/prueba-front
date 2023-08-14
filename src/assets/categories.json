@@ -1,0 +1,27 @@
+[
+    {
+        "name":"Cafetería"
+    },
+    {
+        "name":"Combos",
+        "subcategories":["Bebidas", "Sanguches"]
+    },
+    {
+        "name":"Comidas"
+    },
+    {
+        "name":"Bebidas"
+    },
+    {
+        "name":"Kiosco"
+    },
+    {
+        "name":"Promociones Exclusivas"
+    },
+    {
+        "name":"Combo Minions"
+    },
+    {
+        "name":"Helados"
+    }
+]

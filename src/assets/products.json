@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "name":"Chocofan 37gr",
+        "price":200,
+        "stock":true,
+        "visible":true,
+        "image":"chocoarroz.png"
+    },
+    {
+        "id":2,
+        "name":"Hamburguesa Doble + Gaseosa + Papas",
+        "price":1200,
+        "stock":false,
+        "visible":true,
+        "image":"burguer.png"
+    },
+    {
+        "id":3,
+        "name":"Capuccino Italiano Llevar Dp 14 Oz",
+        "price":500,
+        "stock":true,
+        "visible":false,
+        "image":"spot.png"
+    }
+]

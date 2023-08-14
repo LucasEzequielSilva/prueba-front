@@ -1,0 +1,18 @@
+/* styles.css */
+.skeleton-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho según tus necesidades */
+    background-color: #f0f0f0; /* Color de fondo del skeleton screen */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .skeleton-line {
+    height: 10px; /* Altura de las líneas del skeleton screen */
+    width: 80%; /* Ancho de las líneas del skeleton screen */
+    margin: 10px auto;
+    background-color: #e0e0e0; /* Color de las líneas del skeleton screen */
+    border-radius: 4px;
+  }
