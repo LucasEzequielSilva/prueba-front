@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -14,8 +15,9 @@ export class ProductsComponent implements OnInit {
     cards:Product[] = []
     searchTerm: string = '';
     filteredCards: Array<Product> = [];
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private titleService: Title ) {}
     ngOnInit(): void {
+      this.titleService.setTitle('Productos | Prueba Tecnica')
       this.http.get<Product[]>('./assets/products.json').subscribe((response: Product[]) => {
         setTimeout(() => {
           this.cards = response;

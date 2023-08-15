@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-card-detail',
   templateUrl: './details.component.html',
@@ -12,6 +14,7 @@ export class DetailsComponent implements OnInit {
   data: Product | undefined;
 
   constructor(
+    private titleService: Title,
     private route: ActivatedRoute, 
     private http: HttpClient,
     private router: Router
@@ -26,6 +29,9 @@ export class DetailsComponent implements OnInit {
       if (this.cardId !== null) {
         this.http.get<Product[]>('./assets/products.json').subscribe((response: Product[] ) => {
           this.data = response.find((product: Product) => product.id === Number(this.cardId));
+          if (this.data) {
+            this.titleService.setTitle(this.data.name + ' | Prueba Tecnica'); // Actualiza el título de la página
+          }
         });
       }
     });
