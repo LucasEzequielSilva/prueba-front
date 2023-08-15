@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
 import {MatButtonModule} from '@angular/material/button';
 import { DialogAnimationsConfirmation } from './confirmation.module';
 import { DialogAnimationsExampleDialog } from './stock-rehabilitation-dialog.component';
+import { CommonModule } from '@angular/common';
+import { HiddenDialog } from './hidden-product.module';
 /**
  * @title Dialog Animations
  */
@@ -11,7 +13,7 @@ import { DialogAnimationsExampleDialog } from './stock-rehabilitation-dialog.com
     selector: 'dialog-animations-example',
     templateUrl: './dialog-animations-example.html',
     standalone: true,
-    imports: [MatButtonModule, MatDialogModule, DialogAnimationsConfirmation],
+    imports: [MatButtonModule, MatDialogModule, DialogAnimationsConfirmation, CommonModule, HiddenDialog],
   })
   export class DialogAnimationsExample {
     constructor(public dialog: MatDialog) {}
@@ -19,6 +21,11 @@ import { DialogAnimationsExampleDialog } from './stock-rehabilitation-dialog.com
       this.dialog.open(DialogAnimationsExampleDialog, {
         width: '250px',
         panelClass: 'custom-modalbox'
+      });
+    }
+    openDialogHidden(): void {
+      this.dialog.open(HiddenDialog, {
+        width: '250px',
       });
     }
   }

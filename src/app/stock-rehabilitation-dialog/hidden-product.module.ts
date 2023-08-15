@@ -1,22 +1,19 @@
-import {Component, Input, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {Component, } from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { DialogAnimationsExampleDialog } from './stock-rehabilitation-dialog.component';
 import { CommonModule } from '@angular/common';
 /* POPUP FINAL */
 @Component({
-  selector: 'dialog-animations-confirmation',
-  templateUrl: './dialog-animations-confirmation.html', // Ajusta la ruta al archivo de la plantilla
+  selector: 'hidden-product',
+  templateUrl: './hidden-product.module.html', // Ajusta la ruta al archivo de la plantilla
   styleUrls: ['./dialog-animations-example.css'],
   standalone: true,
   imports: [MatDialogModule, MatButtonModule, DialogAnimationsExampleDialog, CommonModule],
 })
-export class DialogAnimationsConfirmation {
+export class HiddenDialog {
   constructor(
-    public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, 
     public dialog: MatDialog, 
-    @Inject(MAT_DIALOG_DATA) public data: any
     ) {}
     
 }

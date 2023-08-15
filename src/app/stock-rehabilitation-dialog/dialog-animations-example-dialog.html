@@ -1,13 +1,8 @@
 
-<div class="dialogo" mat-raised>
+<div class="dialogo bg-[#E6E0E9]" mat-raised>
   <h1 mat-dialog-title>¿En cuánto desea rehabilitar stock?</h1>
   <div class="flex flex-wrap gap-2">
-    <span (click)="selectRehabilitationTime('2 HR')" class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">2 HR</span>
-    <span class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">4 HR</span>
-    <span class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">8 HR</span>
-    <span class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">12 HR</span>
-    <span class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">24 HR</span>
-    <span class="border text-[#6750a4] p-4 font-bold cursor-pointer rounded">NO REHABILITAR</span>
+    <span *ngFor="let option of options" (click)="selectRehabilitationTime(option)" class="border border-black/50 text-[#6750a4] p-4 font-bold cursor-pointer rounded">{{option + (!option.includes('NO REHABILITAR') ? 'HR' : '')}}</span>
   </div>
   <div class="w-full flex justify-end">
     <button mat-dialog-close class="text-[#6750A4] p-4 font-bold text-xl">Cerrar</button>
