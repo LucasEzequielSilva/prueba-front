@@ -1,1 +1,77 @@
-<p>details works!</p>
+<div class="flex flex-col justify-between gap-4 h-screen w-full bg-main p-6">
+  <ng-container *ngIf="data; else skeleton">
+    <div class="flex flex-col gap-2">
+
+      <!-- first row -->
+      <div class="flex items-start justify-between">
+        <h2 class="font-bold text-2xl text-white">{{ data.name }}</h2>
+        <button
+        (click)="goBack()"
+        class="text-gray_text active:bg-white/70 hover:bg-white/30 hover:text-[#222] transition-colors active:text-[#444] rounded ease-in duration-150"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+        </button>
+      </div>
+      <!-- second -->
+      <div [ngClass]="['px-[8px] py-[5px] w-fit h-fit rounded-full text-xs font-medium flex justify-center items-center text-white content-center', (data.stock && data.visible) ? 'bg-[#437330]' : (data.visible ? 'bg-[#857101]' : 'bg-[#5D0000]')]">
+          <span class="not-italic leading-both text-center self-center">{{ (data.stock && data.visible) ? 'HABILITADO - CON STOCK' : (data.visible ? 'VISIBLE - SIN STOCK' : 'OCULTO') }}</span>
+      </div>
+      <!-- line -->
+      <hr class="bg-gray_text text-gray_text">
+      <h2 class="text-xl font-bold text-white md:text-2xl">Detalles del producto</h2>
+      <div class="flex flex-col gap-4">
+        <div class="flex justify-between text-gray_text text-sm sm:text-md md:text-lg">
+          <p>Items</p>
+          <p>Stock</p>
+        </div>
+        <div class="flex justify-between">
+          <div class="flex items-center md:items-start gap-2">
+            <img class="rounded w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28 object-cover" [src]="'../assets/images/'+data.image" [alt]="data.name">
+            <p class="text-acento text-sm sm:text-md md:text-lg">{{data.name}}</p>
+          </div>
+          <div class="flex gap-5 items-end">
+            <div [class]="'w-10 h-6 rounded-[100px] flex items-center p-0.5 ' + (data.visible ? 'bg-[#6CC24A]' : 'bg-[#B40000]')">
+              <div (click)="toggleState()"
+                [class]="'rounded-full w-5 h-5 flex justify-center items-center cursor-pointer ' + (!data.visible ? 'bg-[#5E0000] transform translate-x-0 transition-all duration-150 ease-in' : 'bg-[#437330] transform translate-x-4 transition-all duration-150 ease-out')">
+                <!-- bola -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <ng-container *ngIf="data.visible; else isFailed">
+                    <path
+                      d="M5.99998 10.78L3.21998 7.99999L2.27332 8.93999L5.99998 12.6667L14      4.66665L13.06 3.72665L5.99998 10.78Z"
+                      fill="#F3FFEE" />
+                  </ng-container>
+                  <ng-template #isFailed>
+                    <path
+                      d="M12.6666 4.27333L11.7266 3.33333L7.99998 7.06L4.27331 3.33333L3.33331 4.27333L7.05998 8L3.33331 11.7267L4.27331 12.6667L7.99998 8.93999L11.7266 12.6667L12.6666 11.7267L8.93998 8L12.6666 4.27333Z"
+                      fill="#FFE4E4" />
+                  </ng-template>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-gray_text text-gray_text">
+      </div>
+    </div>
+    <div class="flex flex-col gap-5">
+        <dialog-animations-example></dialog-animations-example>
+      <app-footer></app-footer>
+    </div>
+  </ng-container>
+  <ng-template #skeleton>
+      <p>Loading...</p>
+  </ng-template>
+</div>

@@ -21,7 +21,7 @@
   </button>
   <!-- Drawer -->
   <div
-    class="fixed z-20 top-0 left-0 h-screen w-full lg:w-64 bg-main transform ease-in-out transition-transform duration-300 flex flex-col p-4 gap-4"
+    class="fixed z-20 top-0 left-0 h-screen w-full lg:w-2/6 bg-main transform ease-in-out transition-transform duration-300 flex flex-col p-4 gap-4"
     [class.translate-x-0]="isDrawerOpen"
     [class.-translate-x-full]="!isDrawerOpen"
     [class.shadow]="isDrawerOpen"
@@ -75,7 +75,7 @@
                     type="radio"
                     [id]="subcategory"
                   >
-                                    <label for="{{ subcategory }}" class="grow text-[#79747E] transition-colors duration-150 hover:text-acento ease-in cursor-pointer">{{ subcategory }}</label>
+                  <label for="{{ subcategory }}" class="grow text-[#79747E] transition-colors duration-150 hover:text-acento ease-in cursor-pointer">{{ subcategory }}</label>
                 </div>
               </ng-container>
             </div>

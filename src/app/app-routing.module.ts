@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './layout/main-layout/layout.component';
 import { ProductsComponent } from './products/products.component';
 import { DetailsComponent } from './details/details.component';
 
@@ -21,8 +21,8 @@ const routes: Routes = [
     ]
   },
   {
-    path:"details",
-    component: DetailsComponent
+    path:":id",
+    component: DetailsComponent,
   }
 ];
 
